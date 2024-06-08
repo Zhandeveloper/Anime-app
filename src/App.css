@@ -367,7 +367,12 @@ footer a{
 footer a:hover{
     color: gold;
     transform: scale(1.1);
-}   
+} 
+ /* Styles not found */
+ .not-found{
+    display: flex;
+    justify-content: center;
+ }
 /* Стили для темной темы */
 .dark-theme {
     color: #fff;
@@ -501,6 +506,9 @@ footer a:hover{
     .video-player {
         width: 100%;
         height: 400px;
+    }
+    .not-found img{
+        width: 100%;
     }
 }
 

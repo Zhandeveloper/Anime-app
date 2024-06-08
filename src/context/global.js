@@ -1,4 +1,3 @@
-// context/global.js
 import React, { createContext, useContext, useReducer, useEffect, useState } from "react";
 
 const GlobalContext = createContext();
@@ -12,13 +11,13 @@ const reducer = (state, action) => {
         case GET_POPULAR_ANIME:
             return { ...state, popularAnime: action.payload, loading: false }
         case SEARCH:
-            return { ...state, searchResults: action.payload, loading: false }
+            return { ...state, searchResults: action.payload, noResults: action.payload.length === 0, loading: false }
         case GET_UPCOMING_ANIME:
             return { ...state, upcomingAnime: action.payload, loading: false }
         case GET_AIRING_ANIME:
             return { ...state, airingAnime: action.payload, loading: false }
         case GET_PICTURES:
-            return {...state, pictures:action.payload, loading:false}    
+            return { ...state, pictures: action.payload, loading: false }    
         default:
             return state;
     }
@@ -30,9 +29,10 @@ const SEARCH = "SEARCH";
 const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
 const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
-const GET_PICTURES= "GET_PICTURES";
+const GET_PICTURES = "GET_PICTURES";
 
 export const GlobalContextProvider = ({ children }) => {
+    
     // initial state
     const initialState = {
         popularAnime: [],
@@ -41,6 +41,7 @@ export const GlobalContextProvider = ({ children }) => {
         pictures: [],
         isSearch: false,
         searchResults: [],
+        noResults: false,
         loading: false,
     }
 
@@ -72,7 +73,7 @@ export const GlobalContextProvider = ({ children }) => {
         dispatch({ type: LOADING })
         const response = await fetch(`https://api.jikan.moe/v4/anime?q=${anime}&order_by=popularity&sort=asc&sfw`);
         const data = await response.json();
-        console.log('Search Results:', data.data);  // Добавьте этот лог
+        console.log('Search Results:', data.data);
         dispatch({ type: SEARCH, payload: data.data })
     }
 
@@ -89,7 +90,7 @@ export const GlobalContextProvider = ({ children }) => {
         dispatch({ type: LOADING })
         const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`)
         const data = await response.json()
-        console.log('Popular Anime:', data.data);  // Добавьте этот лог
+        console.log('Popular Anime:', data.data);
         dispatch({ type: GET_POPULAR_ANIME, payload: data.data })
     }
 
@@ -98,7 +99,7 @@ export const GlobalContextProvider = ({ children }) => {
         dispatch({ type: LOADING })
         const response = await fetch(`${baseUrl}/top/anime?filter=upcoming`);
         const data = await response.json();
-        console.log('Upcoming Anime:', data.data);  // Добавьте этот лог
+        console.log('Upcoming Anime:', data.data);
         dispatch({ type: GET_UPCOMING_ANIME, payload: data.data })
     }
 
@@ -107,7 +108,7 @@ export const GlobalContextProvider = ({ children }) => {
         dispatch({ type: LOADING })
         const response = await fetch(`${baseUrl}/top/anime?filter=airing`);
         const data = await response.json();
-        console.log('Airing Anime:', data.data);  // Добавьте этот лог
+        console.log('Airing Anime:', data.data);
         dispatch({ type: GET_AIRING_ANIME, payload: data.data })
     }
 

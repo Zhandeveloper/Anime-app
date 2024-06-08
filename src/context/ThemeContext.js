@@ -7,12 +7,23 @@ import darkHeader from '../img/fon-header-dark.jpg';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(localStorage.getItem('theme') === 'dark');
-  const [backgroundImage, setBackgroundImage] = useState(
-    localStorage.getItem('backgroundImage') || lightBackground
+  // Проверка системных настроек темы
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    } else {
+      return prefersDarkScheme;
+    }
+  });
+
+  const [backgroundImage, setBackgroundImage] = useState(() =>
+    localStorage.getItem('backgroundImage') || (prefersDarkScheme ? darkBackground : lightBackground)
   );
-  const [headerBack, setHeaderBack] = useState(
-    localStorage.getItem('headerBack') || lightHeader
+  const [headerBack, setHeaderBack] = useState(() =>
+    localStorage.getItem('headerBack') || (prefersDarkScheme ? darkHeader : lightHeader)
   );
 
   useEffect(() => {
@@ -20,6 +31,19 @@ export const ThemeProvider = ({ children }) => {
     setBackgroundImage(isDarkTheme ? darkBackground : lightBackground);
     setHeaderBack(isDarkTheme ? darkHeader : lightHeader);
   }, [isDarkTheme]);
+
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChange = (e) => {
+      setIsDarkTheme(e.matches);
+    };
+
+    darkModeMediaQuery.addEventListener('change', handleChange);
+    return () => {
+      darkModeMediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
