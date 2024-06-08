@@ -100,6 +100,10 @@ header button {
     position: relative;
     transition: all 1s ease;
 }
+header button:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Подсветка */
+  transform: scale(1.05); /* Увеличение на 5% */
+}
 
 header img {
     width: 230px;
@@ -116,6 +120,11 @@ header img {
 }
 
 .title {
+    font-size: 29px;
+    color: #fff;
+    margin-left: 10px;
+}
+.title-trailer{
     font-size: 29px;
     color: #1f74ed;
     margin-left: 10px;
@@ -332,7 +341,33 @@ iframe {
     height: 55px;
     margin-left: 20px;
 }
+ /* Styles for footer  */
+ footer{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f75ed4a;
+    border-top: 5px solid #5F5FE3;
+    margin-top: 50px;
 
+ }
+ footer img{
+    height: 200px;
+    width: 250px;
+    margin: 20px;
+ }
+footer a{
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+footer a:hover{
+    color: gold;
+    transform: scale(1.1);
+}   
 /* Стили для темной темы */
 .dark-theme {
     color: #fff;
@@ -416,7 +451,44 @@ iframe {
         height: 450px;
     }
 }
-
+@media(max-width:680px){
+    footer img:last-child{
+        display: none;
+    }
+}
+@media(max-width:740px){
+    .card-anime a {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        border: 5px solid #e5e7eb;
+        margin: 5px;
+        width:43%;
+        text-align: center;
+        overflow: hidden;
+        transition: all 1s ease;
+        padding: 10px;
+    }
+    .card-anime a:hover {
+        border: 5px solid #1f74ed;
+        transform: scale(1.03);
+    }
+    
+    .card-anime img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 7px;
+    }
+    
+    .card-anime p {
+        margin-top: 5px;
+        font-size: 1.7rem;
+        color: #000;
+    }
+}
 @media (max-width: 660px) {
     header input {
         width: 300px;
@@ -450,6 +522,35 @@ iframe {
         font-size: 23px;
         color: #000;
     }
+    .card-anime a {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        border: 4px solid #e5e7eb;
+        margin: 5px;
+        width:41%;
+        text-align: center;
+        overflow:hidden;
+        transition: all 1s ease;
+        padding: 10px;
+    }
+    .card-anime a:hover {
+        border: 4px solid #1f74ed;
+        transform: scale(1.03);
+    }
+    .card-anime img {
+        width: 90%;
+        object-fit: cover;
+        border-radius: 7px;
+    }
+    
+    .card-anime p {
+        margin-top: 2px;
+        font-size: 1.4rem;
+        color: #000;
+    }
 }
 
 @media (max-width: 520px) {
@@ -462,6 +563,37 @@ iframe {
     .video-player {
         padding: 5px;
         height: 350px;
+    }
+    .card-anime a {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        border: 4px solid #e5e7eb;
+        margin: 5px;
+        width:41%;
+        text-align: center;
+        overflow: hidden;
+        transition: all 1s ease;
+        padding: 10px;
+        
+    }
+    .card-anime a:hover {
+        border: 4px solid #1f74ed;
+        transform: scale(1.03);
+    }
+    .card-anime img {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+        border-radius: 7px;
+    }
+    
+    .card-anime p {
+        margin-top: 2px;
+        font-size: 1.4rem;
+        color: #000;
     }
 }
 
@@ -482,6 +614,24 @@ iframe {
     }
     .big-image {
         padding: 10px;
+    }
+    footer img{
+        margin: 0px;
+    }
+    .card-anime a {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        border: 4px solid #e5e7eb;
+        margin: 5px;
+        width:39%;
+        text-align: center;
+        overflow: hidden;
+        transition: all 1s ease;
+        padding: 10px;
+        height: 290px;
     }
 }
 
@@ -515,8 +665,18 @@ iframe {
         width: 300px;
         object-fit: cover;
     }
+    footer img{
+        width: 200px;
+    }
 }
-
+@media(max-width:370px){
+    footer img{
+        display: none;
+    }
+    footer a{
+        font-size: 23px;
+    }
+}
 @media (max-width: 345px) {
     .anime-img {
         width: 250px;
@@ -531,5 +691,9 @@ iframe {
     .small-images img {
         width: 5rem;
         height: 5rem;
+    }
+    .card-anime a{
+        width: 70%;
+        height: 100%;
     }
 }

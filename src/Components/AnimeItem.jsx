@@ -83,7 +83,7 @@ function AnimeItem() {
         </p>
       </div>
       <div className='title-box'>
-        <h3 className='title'>Trailer</h3>
+        <h3 className='title-trailer'>Trailer</h3>
       </div>
       <div className="trailer-container">
         {trailer?.embed_url ? (

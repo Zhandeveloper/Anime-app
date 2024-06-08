@@ -3,10 +3,10 @@ import Popular from './Popular'
 import Upcoming from './Upcoming'
 import Airing from "./Airing";
 import { useGlobalContext } from '../context/global'
-import naruto_img from '../img/naruto-header-1.png'
-import endo_img from '../img/endo.png'
-import search_img from '../img/search-img.png'
 import { useTheme } from '../context/ThemeContext';
+import endo_img from '../img/endo-footer.png'
+import naruto_img from '../img/naruto-footer.png'
+import search_img from '../img/search-img.png'
 import sun_img from '../img/sun.png'
 import moon_img from '../img/moon.png'
 function HomePage() {
@@ -74,6 +74,12 @@ function HomePage() {
                 {/* <img src={endo_img} alt="endo" className='endo' /> */}
             </header>
             {switchComponent()}
+            <footer>
+            <img src={endo_img} alt="endo" />
+              
+             <a href="https://t.me/Zhan2018" target='_blank'>Created by the developer Zhan</a>
+             <img src={naruto_img} alt="naruto" />
+            </footer>
     </div>
   )
 }
