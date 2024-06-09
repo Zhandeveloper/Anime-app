@@ -17,7 +17,7 @@ function Airing({ rendered }) {
         airingAnime.map((anime) => (
           <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
             <img src={anime.images.jpg.large_image_url} alt='anime_img' />
-            <p>{anime.title}</p>
+            <p>{anime.title_english ? anime.title_english : anime.title}</p>
           </Link>
         ))
       );
@@ -27,7 +27,7 @@ function Airing({ rendered }) {
         searchResults.map((anime) => (
           <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
             <img src={anime.images.jpg.large_image_url} alt='anime_img' />
-            <p>{anime.title}</p>
+            <p>{anime.title_english ? anime.title_english : anime.title}</p>
           </Link>
         ))
       );

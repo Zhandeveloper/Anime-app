@@ -14,11 +14,12 @@ function AnimeItem() {
 
   // Destructuring anime
   const {
-    title, synopsis,
+    title, title_english, synopsis,
     trailer, duration, aired,
     season, images, rank,
     score, scored_by, popularity,
-    status, rating, source, episodes
+    status, rating, source, episodes,
+    genres, studios
   } = anime;
 
   // Function to get anime data
@@ -50,10 +51,10 @@ function AnimeItem() {
 
   return (
     <div className='anime-item'>
-      
+
       <h1><button onClick={() => navigate(-1)} className='back'>
-          <i className='fas fa-arrow-left'></i>Back
-        </button> {title}</h1>
+        <i className='fas fa-arrow-left'></i>Back
+      </button> {title_english ? title_english : title}</h1>
       <div className="details">
         <div className="detail">
           <div className="image">
@@ -71,8 +72,32 @@ function AnimeItem() {
             <p><span>Status:</span><span>{status}</span></p>
             <p><span>Source:</span><span>{source}</span></p>
             <p><span>Season:</span><span>{season}</span></p>
+            <p>
+              <span>Studios:</span>
+              <span>
+                {studios?.map((studio, index) => (
+                  <span key={index}>
+                    <a href={studio.url} target="_blank" rel="noopener noreferrer" className="details-a">{studio.name}</a>
+                    {index !== studios.length - 1 && ', '}
+                  </span>
+                ))}
+              </span>
+            </p>
             <p><span>Duration:</span><span>{duration}</span></p>
             <p><span>Episodes:</span><span>{episodes}</span></p>
+            <p>
+              <span>Genres:</span>
+              <span>
+                {genres?.map((genre, index) => (
+                  <span key={index}>
+                    <a href={genre.url} target="_blank" rel="noopener noreferrer" className='details-a'>{genre.name}</a>
+                    {index !== genres.length - 1 && ', '}
+                  </span>
+                ))}
+              </span>
+            </p>
+
+
           </div>
         </div>
         <p className="description">
@@ -83,7 +108,8 @@ function AnimeItem() {
         </p>
       </div>
       <div className='title-box'>
-        <h3 className='title-trailer'>Trailer</h3>
+        <a className='title-trailer' href={trailer?.url || '#'} target='_blank'>Trailer</a>
+
       </div>
       <div className="trailer-container">
         {trailer?.embed_url ? (
