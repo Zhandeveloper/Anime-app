@@ -126,11 +126,22 @@ header img {
 }
 .title-trailer{
     font-size: 29px;
-    color: #1f74ed;
+    color: white;
     margin-left: 10px;
     cursor: pointer;
     font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    background-color: #1f74ed;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
+.title-trailer img{
+    margin-left: 5px;
+    width:0px;
+    text-align: center;
+}
+
 
 .search-conatiner {
     background-color: gray;

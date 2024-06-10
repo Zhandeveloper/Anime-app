@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-
+import youtube_img from '../img/youtube-img.png'
 function AnimeItem() {
   const { id } = useParams();
 
@@ -19,7 +19,7 @@ function AnimeItem() {
     season, images, rank,
     score, scored_by, popularity,
     status, rating, source, episodes,
-    genres, studios
+    genres, studios, themes
   } = anime;
 
   // Function to get anime data
@@ -96,6 +96,18 @@ function AnimeItem() {
                 ))}
               </span>
             </p>
+            <p>
+              <span>Themes:</span>
+              <span>
+                {themes?.map((theme, index) => (
+                  <span key={index}>
+                    <a href={theme.url} target="_blank" rel="noopener noreferrer" className='details-a'>{theme.name}</a>
+                    {index !== themes.length - 1 && ', '}
+                  </span>
+                ))}
+              </span>
+            </p>
+
 
 
           </div>
@@ -109,7 +121,6 @@ function AnimeItem() {
       </div>
       <div className='title-box'>
         <a className='title-trailer' href={trailer?.url || '#'} target='_blank'>Trailer</a>
-
       </div>
       <div className="trailer-container">
         {trailer?.embed_url ? (
