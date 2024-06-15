@@ -131,10 +131,15 @@ header img {
     cursor: pointer;
     font-weight: bold;
     text-align: center;
-    padding: 5px;
+    padding: 7px;
     background-color: #1f74ed;
     border-radius: 5px;
     margin-bottom: 10px;
+    transition: all 1s ease;
+}
+.title-trailer:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Подсветка */
+    transform: scale(1.05); /* Увеличение на 5% */
 }
 .title-trailer img{
     margin-left: 5px;

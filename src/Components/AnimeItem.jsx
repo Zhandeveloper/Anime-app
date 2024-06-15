@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import youtube_img from '../img/youtube-img.png'
 function AnimeItem() {
   const { id } = useParams();
+  console.log(id)
 
   // State
   const [anime, setAnime] = useState({});
