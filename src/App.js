@@ -7,6 +7,7 @@ import HomePage from './Components/HomePage';
 import Gallery from './Components/Gallery';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import ScrollToTop from './context/ScrollToTop';
+import AnimeVideos from './Components/AnimeVideos';
 
 function AppWrapper() {
   const { isDarkTheme, backgroundImage } = useTheme();
@@ -18,6 +19,7 @@ function AppWrapper() {
         <Route path='/' element={<HomePage />} />
         <Route path='/anime/:id' element={<AnimeItem />} />
         <Route path='/character/:id' element={<Gallery />} />
+        <Route path="/anime/:id/videos" element={<AnimeVideos />} />
       </Routes>
     </div>
   );

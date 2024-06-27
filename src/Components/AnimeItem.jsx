@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import youtube_img from '../img/youtube-img.png'
+
 function AnimeItem() {
   const { id } = useParams();
   console.log(id)
@@ -9,6 +9,7 @@ function AnimeItem() {
   const [anime, setAnime] = useState({});
   const [characters, setCharacters] = useState([]);
   const [showMore, setShowMore] = useState(false);
+  const [videos,setVideos] = useState([])
 
   //Navigation logic
   const navigate = useNavigate(); // Заменим useHistory на useNavigate
@@ -44,6 +45,8 @@ function AnimeItem() {
       console.error('Error fetching characters:', error);
     }
   };
+  
+
 
   useEffect(() => {
     getAnime(id);
@@ -134,6 +137,9 @@ function AnimeItem() {
         ) : (
           <h3>Trailer not available</h3>
         )}
+      </div>
+      <div className="videos-box">
+      <Link to={`/anime/${id}/videos`} className='title-trailer'>More videos</Link>
       </div>
       <div className='box-characters-h3'><h3>Characters</h3></div>
       <div className="characters">
